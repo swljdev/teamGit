@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Zomato from './component/Zomato/Zomato'
+import Nasa from './component/NasaAPI/Nasa'
+
 import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -50,7 +52,7 @@ class App extends React.Component {
         
         <div className="bodyBlock">
         <Zomato latitude={this.state.latitude} longitude={this.state.longitude} />
-
+        <Nasa latitude={this.state.latitude} longitude={this.state.longitude} />
         </div>
       
      

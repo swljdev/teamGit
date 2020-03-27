@@ -29,18 +29,20 @@ export default class Nasa extends React.Component{
       }
     }
       
-      render() {
-          if (this.state.photo !==undefined) {
+    render() {
+        if (this.state.photo !==undefined) {
               console.log("Received Data:", this.state.photo)
-         return (
-          <div className= "nasa">
-            <img src = {this.state.photo} alt={this.state.title} /> 
-          </div>
-        )
-         }  else 
-         return (
-             <p></p>
-         )}
+            return (
+                <div className= "nasa">
+                    <img src = {this.state.photo} alt={this.state.title} /> 
+                </div>
+                )
+        } else {
+            return (
+            <p>NASA DATA FAILED TO LOAD</p>
+            )
+        }
+    }
 }
 
 
