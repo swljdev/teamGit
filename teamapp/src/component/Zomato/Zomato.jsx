@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ListItemText from '@material-ui/core/ListItemText';
 
 export default class Zomato extends React.Component {
     
@@ -41,15 +42,16 @@ export default class Zomato extends React.Component {
       if (this.state.restaurants !== undefined) {
         console.log('Received Data: ', this.state.restaurants)
         return ( 
-            <div>
-                <ul>
+            <div className="zomatoList">
+             <h4>Restaraunts Near You:</h4>
                     {
                     this.state.restaurants.map(function(store, index){
                     console.log(store);
+                   
                     return <li key={index}>{store.restaurant.name}</li>
   })
                     }
-                </ul>
+            
             </div>
            
          )
