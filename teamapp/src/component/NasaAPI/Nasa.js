@@ -30,6 +30,8 @@ export default class Nasa extends React.Component{
     }
       
     render() {
+
+        
         if (this.state.photo !==undefined) {
               console.log("Received Data:", this.state.photo)
             return (
