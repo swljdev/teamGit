@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Zomato from './component/Zomato/Zomato'
 
 import './App.css';
 
@@ -32,7 +33,7 @@ class App extends React.Component {
        <h1>GeoLocation App</h1>
        <button id="location" onClick={this.geolocation}>Show my location</button><br/>
           <p>The Location IS {this.state.latitude} & {this.state.longitude}</p>
-          
+          <Zomato latitude={this.state.latitude} longitude={this.state.longitude} />
       </div>
     );
   }
