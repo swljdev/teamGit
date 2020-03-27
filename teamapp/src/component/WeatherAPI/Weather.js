@@ -5,7 +5,10 @@ let key = '99f06dadf9df372df9f8e5049250a3e0';
 export default class Weather extends React.Component {
     constructor(props) {
         super(props);
+        this.handleMetricClick = this.handleMetricClick.bind(this);
+        this.handleImperialClick = this.handleImperialClick.bind(this);
         this.state = {
+            isMetric: true,
             isLoading: false,
             units: 'metric',
             temp: '',
@@ -37,12 +40,24 @@ export default class Weather extends React.Component {
             .catch(error => console.log('error', error));
     }}
 
+    handleMetricClick() {
+        this.setState({isMetric: true});
+    }
+
+    handleImperialClick() {
+        this.setState({isMetric: false});
+    }
+
     handleUnitChange() {
         if (this.state.units === 'metric'){
             let newTemp = (this.state.temp * (9/5)) + (32)
+            newTemp = (newTemp.toFixed(1))
             let newFeels = (this.state.feels_like * (9/5)) + (32)
+            newFeels = (newFeels.toFixed(1))
             let newMin = (this.state.temp_min * (9/5)) + (32)
+            newMin = (newMin.toFixed(1))
             let newMax = (this.state.temp_max * (9/5)) + (32)
+            newMax = (newMax.toFixed(1))
             this.setState({
                 temp: newTemp,
                 feels_like: newFeels,
@@ -52,9 +67,13 @@ export default class Weather extends React.Component {
             })
         } else if (this.state.units === 'imperial'){
             let newTemp = (this.state.temp - 32) *(5/9)
+            newTemp = (newTemp.toFixed(1))
             let newFeels = (this.state.feels_like - 32) *(5/9)
+            newFeels = (newFeels.toFixed(1))
             let newMin = (this.state.temp_min - 32) *(5/9)
+            newMin = (newMin.toFixed(1))
             let newMax = (this.state.temp_max - 32) *(5/9)
+            newMax = (newMax.toFixed(1))
             this.setState({
                 temp: newTemp,
                 feels_like: newFeels,
@@ -64,16 +83,22 @@ export default class Weather extends React.Component {
             })
         }
     }
-
 render() {
+    const isMetric = this.state.isMetric;
+    let currentUnit;
+    if (this.state.units === 'metric') {
+        currentUnit = 'switch to imperial'
+    } else {
+        currentUnit = 'switch to metric'
+    }
     return (
         <div className="weather">
             <h4>Today's Weather</h4>
                 <li>Todays temperature is: {this.state.temp}</li>
                 <li>It feels like: {this.state.feels_like}</li>
-                <li>The maximum temperature is: {this.state.temp_max}</li>
-                <li>The minimum temperature is: {this.state.temp_min}</li>
-            <button onClick={this.handleUnitChange}>Change C/F</button>
+                <li>Today's high is: {this.state.temp_max}</li>
+                <li>Today's low is: {this.state.temp_min}</li>
+            <button onClick={this.handleUnitChange}>{currentUnit}</button>
         </div>
     )
 }
