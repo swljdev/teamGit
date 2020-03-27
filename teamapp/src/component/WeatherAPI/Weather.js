@@ -87,9 +87,9 @@ render() {
     const isMetric = this.state.isMetric;
     let currentUnit;
     if (this.state.units === 'metric') {
-        currentUnit = 'switch to imperial'
+        currentUnit = 'Switch to Imperial'
     } else {
-        currentUnit = 'switch to metric'
+        currentUnit = 'Switch to Metric'
     }
     return (
         <div className="weather">

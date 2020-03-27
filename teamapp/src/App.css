@@ -9,6 +9,9 @@
   justify-content: space-evenly;
 }
 
-.headerType {
-
+.bodyBlock {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: space-evenly;
 }
