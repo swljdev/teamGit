@@ -1,0 +1,12 @@
+.zomatoList {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: space-evenly;
+    text-align: left;
+}
+
+.zomatoList li {
+    text-align: left;
+    color: white;
+}
