@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import ListItemText from '@material-ui/core/ListItemText';
 
 export default class Zomato extends React.Component {
-    
     constructor(props) {
         super(props);
         this.state = {
             isLoading: false,
             restaurants: undefined
-          };
+        };
     }
 
     componentDidUpdate(prevProps) {
@@ -34,30 +33,27 @@ export default class Zomato extends React.Component {
              })
             })
         .catch(error => console.log('error', error));
+        }
     }
-}
-    
-   
+ 
     render() {
       if (this.state.restaurants !== undefined) {
         console.log('Received Data: ', this.state.restaurants)
         return ( 
             <div className="zomatoList">
-             <h4>Restaraunts Near You:</h4>
+                <h4>Restaraunts Near You:</h4>
+                {
+                this.state.restaurants.map(function(store, index)
                     {
-                    this.state.restaurants.map(function(store, index){
-                    console.log(store);
-                   
-                    return <li key={index}>{store.restaurant.name}</li>
-  })
-                    }
-            
+                        console.log(store);
+                        return <li key={index}>{store.restaurant.name}</li>
+                    })
+                }
             </div>
-           
-         )
-      } else 
-      return (
-          <p>Click 'Show Your Location' To see a list of nearby restaurants</p>
-      )
+        )
+    } else 
+        return (
+            <p>Click 'Show Your Location' To see a list of nearby restaurants</p>
+        )
     }
   }
