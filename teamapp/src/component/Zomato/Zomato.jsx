@@ -38,14 +38,13 @@ export default class Zomato extends React.Component {
  
     render() {
       if (this.state.restaurants !== undefined) {
-        console.log('Received Data: ', this.state.restaurants)
+        
         return ( 
             <div className="zomatoList">
                 <h4>Restaraunts Near You:</h4>
                 {
                 this.state.restaurants.map(function(store, index)
                     {
-                        console.log(store);
                         return <li key={index}>{store.restaurant.name}</li>
                     })
                 }
