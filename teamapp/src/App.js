@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
+import Zomato from './component/Zomato/Zomato'
+import Button from '@material-ui/core/Button';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
 
+import Typography from '@material-ui/core/Typography';
 import './App.css';
 
 class App extends React.Component {
@@ -29,10 +35,27 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-       <h1>GeoLocation App</h1>
-       <button id="location" onClick={this.geolocation}>Show my location</button><br/>
-          <p>The Location IS {this.state.latitude} & {this.state.longitude}</p>
+        <AppBar position="static">
+          <Toolbar className="toolbar">
+          <Typography variant="h6" className="headerType">
+            Geo-location App
+            </Typography>
+            <Button id="location" variant="contained" color="secondary" onClick={this.geolocation}>Show my location</Button>
+           
+            {/* <p>Your Location is {this.state.latitude} & {this.state.longitude}</p> */}
+          </Toolbar> 
+        </AppBar>
+        
+         
+        
+        <div className="bodyBlock">
+        <Zomato latitude={this.state.latitude} longitude={this.state.longitude} />
+
+        </div>
+      
+     
           
+        
       </div>
     );
   }
